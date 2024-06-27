@@ -32,7 +32,6 @@ export const TodoContent: FC = () => {
   };
 
   useEffect(() => {
-    setLoading(true);
     showError('');
     getTodos()
       .then(todosData => {
@@ -40,8 +39,7 @@ export const TodoContent: FC = () => {
       })
       .catch(() => {
         showError('Unable to load todos');
-      })
-      .finally(() => setLoading(false));
+      });
   }, [dispatch]);
 
   return (

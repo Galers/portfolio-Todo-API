@@ -4,7 +4,6 @@ import { deleteTodo } from '../../../api/todos';
 
 interface IProps {
   id: string;
-  loading: boolean;
   showError: (err: string) => void;
   onDeleteClick: (id: string | null) => void;
 }
@@ -20,7 +19,7 @@ export const ButtonMain: FC<IProps> = ({ id, showError, onDeleteClick }) => {
       await deleteTodo(id);
       dispatch({ type: 'DELETE_TODO', payload: id });
       handleFocusInput();
-    } catch (error) {
+    } catch {
       showError('Unable to delete a todo');
     } finally {
       onDeleteClick(null);
@@ -32,9 +31,7 @@ export const ButtonMain: FC<IProps> = ({ id, showError, onDeleteClick }) => {
       type="button"
       className="todo__remove"
       data-cy="TodoDelete"
-      onClick={() => {
-        handleDeleteClick();
-      }}
+      onClick={() => handleDeleteClick()}
     >
       ×
     </button>

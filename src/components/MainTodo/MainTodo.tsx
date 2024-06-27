@@ -1,12 +1,12 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 /* eslint-disable jsx-a11y/control-has-associated-label */
 import { FC, useContext } from 'react';
+import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import { TodoContext, TodoDispatch } from '../../Context/TodoContext';
 import { FilterContext } from '../../Context/FilterContext';
 import { Todo } from '../../types/Todo';
 import { updateTodo } from '../../api/todos';
 import { TodoItem } from './TodoItem';
-import { CSSTransition, TransitionGroup } from 'react-transition-group';
 
 type TProps = {
   loading: boolean;

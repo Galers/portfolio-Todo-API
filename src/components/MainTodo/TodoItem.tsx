@@ -85,7 +85,6 @@ export const TodoItem: FC<IProps> = ({
           <ButtonMain
             id={id}
             showError={showError}
-            loading={loading}
             onDeleteClick={() => setDeleteLoadingId(id)}
           />
         </>
