@@ -20,8 +20,8 @@ The project is divided into three parts: loading todos, adding and deleting todo
 
 ## The task consisted of 3 parts:
 
-- Download the task.
-- Adding and deleting todo's.
+- Download the task;
+- Adding and deleting todo's;
 - Filtering and modifying.
 
 ### In 1st part:
