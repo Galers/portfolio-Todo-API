@@ -13,6 +13,7 @@ import { deleteTodo, updateTodo } from '../../../api/todos';
 
 interface IProps {
   id: string;
+  completed: boolean;
   title: string;
   editableTodoId: string;
   setEditableTodoId: () => void;
@@ -22,6 +23,7 @@ interface IProps {
 
 export const FormMain: FC<IProps> = ({
   id,
+  completed,
   title,
   editableTodoId,
   setEditableTodoId,
@@ -58,7 +60,7 @@ export const FormMain: FC<IProps> = ({
           const newTodo = {
             id: id,
             title: editText.trim(),
-            completed: false,
+            completed: completed ? completed : false,
           };
           const updatedTodo = await updateTodo(newTodo);
 
@@ -79,13 +81,14 @@ export const FormMain: FC<IProps> = ({
       }
     },
     [
-      setEditableLoad,
       editText,
       title,
       id,
+      completed,
+      setEditableLoad,
+      setEditableTodoId,
       dispatch,
       showError,
-      setEditableTodoId,
     ],
   );
 

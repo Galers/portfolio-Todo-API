@@ -25,13 +25,20 @@ export const TodoItem: FC<IProps> = ({
   const [editableTodoId, setEditableTodoId] = useState<string | null>(null);
   const [editableLoad, setEditableLoad] = useState(false);
   const [deleteLoadingId, setDeleteLoadingId] = useState<string | null>(null);
+  const [toglleLoad, setToglleLoad] = useState(false);
 
-  const { title, completed, id } = todo;
+  const { title, completed = false, id } = todo;
   const isEditable = editableTodoId === id;
   const isLoading = deleteLoadingId === id || editableLoad;
 
   const handleDoubleClick = () => {
     setEditableTodoId(id);
+  };
+
+  const handleCheckTodo = async (ids: string) => {
+    setToglleLoad(true);
+    await checkTodo(ids);
+    setToglleLoad(false);
   };
 
   return (
@@ -49,7 +56,7 @@ export const TodoItem: FC<IProps> = ({
           type="checkbox"
           className="todo__status"
           checked={completed}
-          onChange={() => checkTodo(id)}
+          onChange={() => handleCheckTodo(id)}
           disabled={loading}
         />
       </label>
@@ -58,6 +65,7 @@ export const TodoItem: FC<IProps> = ({
         <>
           <FormMain
             id={id}
+            completed={completed}
             title={title}
             editableTodoId={editableTodoId}
             setEditableTodoId={() => setEditableTodoId(null)}
@@ -82,7 +90,11 @@ export const TodoItem: FC<IProps> = ({
           />
         </>
       )}
-      <LoaderTodo loading={loading} isLoading={isLoading} />
+      <LoaderTodo
+        loading={loading}
+        isLoading={isLoading}
+        toglleLoad={toglleLoad}
+      />
     </div>
   );
 };

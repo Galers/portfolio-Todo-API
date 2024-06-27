@@ -19,16 +19,15 @@ type TProps = {
 export const MainTodo: FC<TProps> = ({
   loading,
   loadingAdd,
+  tempTodo,
   showError,
   setLoading,
-  tempTodo,
 }) => {
   const { filteredTodos } = useContext(FilterContext);
   const { todos } = useContext(TodoContext);
   const dispatch = useContext(TodoDispatch);
 
   const checkTodo = async (id: string) => {
-    setLoading(true);
     try {
       const index = todos.findIndex(todo => todo.id === id);
 
@@ -42,8 +41,6 @@ export const MainTodo: FC<TProps> = ({
       dispatch({ type: 'CHECK_TODO', payload: id });
     } catch {
       showError('Unable to update a todo');
-    } finally {
-      setLoading(false);
     }
   };
 

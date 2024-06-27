@@ -3,20 +3,16 @@ import cn from 'classnames';
 
 interface IProps {
   loading: boolean;
-
   isLoading: boolean;
+  toglleLoad: boolean;
 }
 
-export const LoaderTodo: FC<IProps> = ({
-  loading,
-
-  isLoading,
-}) => {
+export const LoaderTodo: FC<IProps> = ({ loading, isLoading, toglleLoad }) => {
   return (
     <div
       data-cy="TodoLoader"
       className={cn('modal overlay', {
-        'is-active': isLoading || loading,
+        'is-active': isLoading || loading || toglleLoad,
       })}
     >
       <div className="modal-background has-background-white-ter" />
