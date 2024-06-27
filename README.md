@@ -87,7 +87,7 @@ This part of the React Todo App project focuses on adding and deleting todos whi
 
 ## Technologies:
 
-1. React <img width="100" src="https://user-images.githubusercontent.com/74038190/212257467-871d32b7-e401-42e8-a166-fcfd7baa4c6b.gif">
+1. React
 
 - The entire site is written in React, leveraging its component-based architecture to create a dynamic and efficient user interface.
 
