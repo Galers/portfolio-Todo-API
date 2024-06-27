@@ -22,7 +22,7 @@ The project is divided into three parts: loading todos, adding and deleting todo
 
 ### In 1st part:
 
-#### At the initial stage, we implemented the loading of todo`s, generated error messages, and implemented filtering by status.
+At the initial stage, we implemented the loading of todo`s, generated error messages, and implemented filtering by status.
 
 - [x] **_Todos loading is implemented_**<br>
 <p align="center">
@@ -41,7 +41,7 @@ The project is divided into three parts: loading todos, adding and deleting todo
 
 ### In 2st part:
 
-#### This part of the React Todo App project focuses on adding and deleting todos while interacting with an API. At this stage, we also implemented smooth animations using the React Transition Group.
+This part of the React Todo App project focuses on adding and deleting todos while interacting with an API. At this stage, we also implemented smooth animations using the React Transition Group.
 
 - [x] **_Adding a todo_**<br>
 <p align="center">
@@ -61,7 +61,7 @@ The project is divided into three parts: loading todos, adding and deleting todo
 
 ### In the last part 3:
 
-#### The React Todo App has been enhanced with the ability to switch and rename todos via the API. A button has been added to toggle the status of all todos and edit the todo name. An error window will now pop up if it is impossible to change the status of a todo.
+The React Todo App has been enhanced with the ability to switch and rename todos via the API. A button has been added to toggle the status of all todos and edit the todo name. An error window will now pop up if it is impossible to change the status of a todo.
 
 - [x] **_Toggling a todo status_**<br>
 <p align="center">
@@ -79,17 +79,17 @@ The project is divided into three parts: loading todos, adding and deleting todo
       <img width="350" height="250" src="https://github.com/Galers/Gif-Galers/blob/main/Error-Rename.jpg">
 </p>
 
-## About the project.
+## Technologies:
 
-### React
+1. React
 
 - The entire site is written in React, leveraging its component-based architecture to create a dynamic and efficient user interface.
 
-### TypeScript
+2. TypeScript
 
 - The site is fully implemented in TypeScript, ensuring type safety and improving the development experience by catching errors early and providing better tooling support.
 
-### SCSS
+3. SCSS
 
 - The styling of the entire page is handled using the SCSS preprocessor, allowing for more modular and maintainable CSS with features like variables, nested rules, and mixins.
 
@@ -106,4 +106,10 @@ The project is divided into three parts: loading todos, adding and deleting todo
 
 1. `Clone` the repository
 2. Run `npm install` to install the dependencies
-3. Create a branch for you solution (e.g. `git checkout -b develop`)
+3. Create a branch for you solution (e.g. `git switch -c develop`)
+4. Run `npm start` to run a development server at http://localhost:3000 (If you need to stop the server press `ctrl + c` in the terminal window)
+
+## Authors
+
+ex. Galers  
+ex. [@Galers](https://www.linkedin.com/in/andriy-halosa-b0900a302/)
