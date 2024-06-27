@@ -4,7 +4,11 @@
   <img src="https://github.com/Galers/Gif-Galers/blob/main/Main_logo.jpg">
 </p>
 
-# Project Description: React Todo App
+## Link by app
+
+[DEMO LINK](https://galers.github.io/portfolio-Todo-API/)
+
+## Project Description: React Todo App
 
 The goal is to implement a simple **_Todo application_** that will save all changes to [the API](https://mate-academy.github.io/fe-students-api/).
 
@@ -74,10 +78,6 @@ The project is divided into three parts: loading todos, adding and deleting todo
 <p align="center">
       <img width="350" height="250" src="https://github.com/Galers/Gif-Galers/blob/main/Error-Rename.jpg">
 </p>
-
-## Link by app
-
-[DEMO LINK](https://galers.github.io/portfolio-Todo-API/)
 
 ## About the project.
 
