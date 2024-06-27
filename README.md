@@ -113,5 +113,4 @@ This part of the React Todo App project focuses on adding and deleting todos whi
 
 ## Authors
 
-ex. Galers  
 ex. [@Galers](https://www.linkedin.com/in/andriy-halosa-b0900a302/)
