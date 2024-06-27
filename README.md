@@ -118,6 +118,8 @@ This part of the React Todo App project focuses on adding and deleting todos whi
 ## Authors
 
 <div align="center">
-<img width="100" src="https://user-images.githubusercontent.com/74038190/235294012-0a55e343-37ad-4b0f-924f-c8431d9d2483.gif">[@Galers](https://www.linkedin.com/in/andriy-halosa-b0900a302/)
+<img width="100" src="https://user-images.githubusercontent.com/74038190/235294012-0a55e343-37ad-4b0f-924f-c8431d9d2483.gif">
+
+[@Galers](https://www.linkedin.com/in/andriy-halosa-b0900a302/)
 
 </div>
