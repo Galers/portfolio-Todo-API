@@ -61,20 +61,22 @@ This part of the React Todo App project focuses on adding and deleting todos whi
 
 ### In the last part 3:
 
-The React Todo App has been enhanced with the ability to switch and rename todos via the API. A button has been added to toggle the status of all todos and edit the todo name. An error window will now pop up if it is impossible to change the status of a todo.
+- Added the ability to switch the status and edit cases.
+- Added a button to switch the status of all cases.
+- Added an error window if the todo status cannot be changed.
 
-- [x] **_Toggling a todo status_**<br>
+* [x] **_Toggling a todo status_**<br>
 <p align="center">
       <img width="400" height="300" src="https://github.com/Galers/Gif-Galers/blob/main/Toggle-1.gif">
       <img width="400" height="300" src="https://github.com/Galers/Gif-Galers/blob/main/Toggle-2.gif">
 </p>
 
-- [x] **_Renaming a todo_**<br>
+* [x] **_Renaming a todo_**<br>
 <p align="center">
       <img width="400" height="300" src="https://github.com/Galers/Gif-Galers/blob/main/Rename_Todo.gif">
 </p>
 
-- [x] **_Error status after toggling or renaming todo_**<br>
+* [x] **_Error status after toggling or renaming todo_**<br>
 <p align="center">
       <img width="350" height="250" src="https://github.com/Galers/Gif-Galers/blob/main/Error-Rename.jpg">
 </p>
