@@ -10,15 +10,14 @@ import { ButtonMain } from './TodoItem/ButtonMain';
 
 interface IProps {
   todo: Todo;
-  loading: boolean;
+  loadingTodos: string[];
   checkTodo?: (id: string) => void;
   showError?: (err: string) => void;
-  setLoading?: (bool: boolean) => void;
 }
 
 export const TodoItem: FC<IProps> = ({
   todo,
-  loading,
+  loadingTodos,
   checkTodo = () => {},
   showError = () => {},
 }) => {
@@ -30,6 +29,11 @@ export const TodoItem: FC<IProps> = ({
   const { title, completed = false, id } = todo;
   const isEditable = editableTodoId === id;
   const isLoading = deleteLoadingId === id || editableLoad;
+  let clear;
+
+  if (loadingTodos) {
+    clear = loadingTodos.includes(todo.id);
+  }
 
   const handleDoubleClick = () => {
     setEditableTodoId(id);
@@ -57,7 +61,7 @@ export const TodoItem: FC<IProps> = ({
           className="todo__status"
           checked={completed}
           onChange={() => handleCheckTodo(id)}
-          disabled={loading}
+          disabled={loadingTodos.includes(todo.id)}
         />
       </label>
 
@@ -89,11 +93,8 @@ export const TodoItem: FC<IProps> = ({
           />
         </>
       )}
-      <LoaderTodo
-        loading={loading}
-        isLoading={isLoading}
-        toglleLoad={toglleLoad}
-      />
+
+      <LoaderTodo isLoading={isLoading} toglleLoad={toglleLoad} clear={clear} />
     </div>
   );
 };

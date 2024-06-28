@@ -4,18 +4,20 @@ import { deleteTodo } from '../../api/todos';
 
 interface IProps {
   showError: (err: string) => void;
-  setLoading: (bool: boolean) => void;
+  setLoadingTodos: (ids: string[]) => void;
 }
 
-export const ButtonFooter: FC<IProps> = ({ showError, setLoading }) => {
+export const ButtonFooter: FC<IProps> = ({ showError, setLoadingTodos }) => {
   const { todos, numberComplete, handleFocusInput } = useContext(TodoContext);
   const dispatch = useContext(TodoDispatch);
 
   const clearCompleted = async () => {
-    setLoading(true);
-    try {
-      const completedTodos = todos.filter(todo => todo.completed);
+    const completedTodos = todos.filter(todo => todo.completed);
+    const todoIds = completedTodos.map(todo => todo.id);
 
+    setLoadingTodos(todoIds);
+
+    try {
       const results = await Promise.allSettled(
         completedTodos.map(todo => deleteTodo(todo.id)),
       );
@@ -43,7 +45,7 @@ export const ButtonFooter: FC<IProps> = ({ showError, setLoading }) => {
     } catch (error) {
       showError('Unable to delete a todo');
     } finally {
-      setLoading(false);
+      setLoadingTodos([]);
     }
   };
 

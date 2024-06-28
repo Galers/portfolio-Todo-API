@@ -7,14 +7,14 @@ import { Todo } from '../../types/Todo';
 
 interface IProps {
   showError: (err: string) => void;
-  setLoadingAdd: (err: boolean) => void;
   setTempTodo: (todo: Todo | null) => void;
+  setLoadingTodos: (ids: string[]) => void;
 }
 
 export const FormHeader: FC<IProps> = ({
   showError,
   setTempTodo,
-  setLoadingAdd,
+  setLoadingTodos,
 }) => {
   const [text, setNewTodo] = useState('');
   const [load, setLoad] = useState(false);
@@ -30,18 +30,18 @@ export const FormHeader: FC<IProps> = ({
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoad(true);
-    setLoadingAdd(true);
 
     if (!text.trim()) {
       showError('Title should not be empty');
       setLoad(false);
-      setLoadingAdd(false);
 
       return;
     }
 
+    const tempId = crypto.randomUUID();
+
     setTempTodo({
-      id: crypto.randomUUID(),
+      id: tempId,
       title: text.trim(),
       completed: false,
     });
@@ -53,6 +53,8 @@ export const FormHeader: FC<IProps> = ({
       completed: false,
     };
 
+    setLoadingTodos([tempId]);
+
     try {
       const todo = await addTodo(newTodo);
 
@@ -60,12 +62,12 @@ export const FormHeader: FC<IProps> = ({
       showError('');
       setNewTodo('');
       handleFocusInput();
-    } catch (error) {
+    } catch {
       showError('Unable to add a todo');
     } finally {
       setTempTodo(null);
       setLoad(false);
-      setLoadingAdd(false);
+      setLoadingTodos([]);
     }
   };
 

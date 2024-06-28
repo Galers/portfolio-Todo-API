@@ -7,59 +7,48 @@ import { Todo } from '../../types/Todo';
 import { updateTodo } from '../../api/todos';
 
 interface IProps {
-  setLoading: (load: boolean) => void;
-  setLoadingAdd: (load: boolean) => void;
   showError: (err: string) => void;
   setTempTodo: (todo: Todo | null) => void;
+  setLoadingTodos: (todoId: string[]) => void;
 }
 
 export const HeaderTodo: FC<IProps> = ({
-  setLoading,
-  setLoadingAdd,
   showError,
   setTempTodo,
+  setLoadingTodos,
 }) => {
   const [load, setLoad] = useState(false);
   const { todos, allCompleted } = useContext(TodoContext);
   const dispatch = useContext(TodoDispatch);
 
   const handleToggleAll = async () => {
-    setLoading(true);
+    const todosToUpdate = allCompleted
+      ? todos.map(todo => ({ ...todo, completed: false }))
+      : todos
+          .filter(todo => !todo.completed)
+          .map(todo => ({ ...todo, completed: true }));
+
+    const todoIds = todosToUpdate.map(todo => todo.id);
+
+    setLoadingTodos(todoIds);
     setLoad(true);
     try {
-      let todosToUpdate;
-
-      if (allCompleted) {
-        todosToUpdate = todos.map(todo => ({
-          ...todo,
-          completed: false,
-        }));
-      } else {
-        todosToUpdate = todos
-          .filter(todo => !todo.completed)
-          .map(todo => ({
-            ...todo,
-            completed: true,
-          }));
-      }
-
       await Promise.all(
-        todosToUpdate.map(todo => {
-          return updateTodo({
-            id: todo.id,
-            title: todo.title,
-            completed: todo.completed,
-          });
-        }),
+        todosToUpdate.map(({ id, title, completed }) =>
+          updateTodo({
+            id,
+            title,
+            completed,
+          }),
+        ),
       );
 
       dispatch({ type: 'CHECK_ALL_TODO' });
-    } catch (error) {
+    } catch {
       showError('Unable to update a todo');
-      throw new Error('Unable to update a todo');
     } finally {
-      setLoading(false);
       setLoad(false);
+      setLoadingTodos([]);
     }
   };
 
@@ -80,7 +69,7 @@ export const HeaderTodo: FC<IProps> = ({
       <FormHeader
         showError={showError}
         setTempTodo={setTempTodo}
-        setLoadingAdd={setLoadingAdd}
+        setLoadingTodos={setLoadingTodos}
       />
     </header>
   );

@@ -9,9 +9,8 @@ import { Todo } from '../types/Todo';
 
 export const TodoContent: FC = () => {
   const [errorMessage, setErrorMessage] = useState('');
-  const [loading, setLoading] = useState(false);
-  const [loadingAdd, setLoadingAdd] = useState(false);
   const [tempTodo, setTempTodo] = useState<Todo | null>(null);
+  const [loadingTodos, setLoadingTodos] = useState<string[]>([]);
 
   const { todos } = useContext(TodoContext);
   const dispatch = useContext(TodoDispatch);
@@ -48,20 +47,20 @@ export const TodoContent: FC = () => {
         <HeaderTodo
           showError={showError}
           setTempTodo={setTempTodo}
-          setLoading={setLoading}
-          setLoadingAdd={setLoadingAdd}
+          setLoadingTodos={setLoadingTodos}
         />
         {hasTodos && (
           <>
             <MainTodo
-              loading={loading}
-              loadingAdd={loadingAdd}
               tempTodo={tempTodo}
+              loadingTodos={loadingTodos}
               showError={showError}
-              setLoading={setLoading}
             />
 
-            <FooterTodo showError={showError} setLoading={setLoading} />
+            <FooterTodo
+              showError={showError}
+              setLoadingTodos={setLoadingTodos}
+            />
           </>
         )}
       </div>

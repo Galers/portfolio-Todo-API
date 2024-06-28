@@ -7,10 +7,10 @@ import { FilterFooter } from './FilterTodo';
 
 interface IProps {
   showError: (err: string) => void;
-  setLoading: (bool: boolean) => void;
+  setLoadingTodos: (ids: string[]) => void;
 }
 
-export const FooterTodo: FC<IProps> = ({ showError, setLoading }) => {
+export const FooterTodo: FC<IProps> = ({ showError, setLoadingTodos }) => {
   const { numberNotComplete } = useContext(TodoContext);
   const numberQuantity = numberNotComplete > 1 ? ' items' : ' item';
 
@@ -23,7 +23,7 @@ export const FooterTodo: FC<IProps> = ({ showError, setLoading }) => {
 
       <FilterFooter items={FILTER_LINKS} />
 
-      <ButtonFooter showError={showError} setLoading={setLoading} />
+      <ButtonFooter showError={showError} setLoadingTodos={setLoadingTodos} />
     </footer>
   );
 };

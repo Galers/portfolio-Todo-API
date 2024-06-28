@@ -9,20 +9,12 @@ import { updateTodo } from '../../api/todos';
 import { TodoItem } from './TodoItem';
 
 type TProps = {
-  loading: boolean;
-  loadingAdd: boolean;
   tempTodo: Todo | null;
+  loadingTodos: string[];
   showError: (err: string) => void;
-  setLoading: (bool: boolean) => void;
 };
 
-export const MainTodo: FC<TProps> = ({
-  loading,
-  loadingAdd,
-  tempTodo,
-  showError,
-  setLoading,
-}) => {
+export const MainTodo: FC<TProps> = ({ tempTodo, loadingTodos, showError }) => {
   const { filteredTodos } = useContext(FilterContext);
   const { todos } = useContext(TodoContext);
   const dispatch = useContext(TodoDispatch);
@@ -52,20 +44,15 @@ export const MainTodo: FC<TProps> = ({
             <TodoItem
               key={todo.id}
               todo={todo}
-              loading={loading}
+              loadingTodos={loadingTodos}
               checkTodo={checkTodo}
               showError={showError}
-              setLoading={setLoading}
             />
           </CSSTransition>
         ))}
         {tempTodo && (
           <CSSTransition key={tempTodo.id} timeout={300} classNames="temp-item">
-            <TodoItem
-              todo={tempTodo}
-              loading={loadingAdd}
-              setLoading={setLoading}
-            />
+            <TodoItem todo={tempTodo} loadingTodos={loadingTodos} />
           </CSSTransition>
         )}
       </TransitionGroup>

@@ -30,8 +30,8 @@ export const FormMain: FC<IProps> = ({
   showError,
   setEditableLoad,
 }) => {
-  const dispatch = useContext(TodoDispatch);
   const [editText, setEditText] = useState(title);
+  const dispatch = useContext(TodoDispatch);
   const inputFocus = useRef<HTMLInputElement | null>(null);
   const editFormRef = useRef<HTMLFormElement>(null);
 
